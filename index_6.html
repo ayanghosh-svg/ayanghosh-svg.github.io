@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayan Ghosh — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F7FB;
+    --ink:#0F2233;
+    --ink-soft:#516478;
+    --violet:#3B6FE0;
+    --coral:#2CA9C9;
+    --teal:#1B8FA6;
+    --yellow:#5B8DEF;
+    --pink:#7FB8E8;
+    --pop:#1E4FD8;
+    --card:#FFFFFF;
+    --border:#DCE6F0;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{ font-family:'Fredoka', sans-serif; }
+
+  a{ color:inherit; text-decoration:none; }
+  ::selection{ background:var(--yellow); color:var(--ink); }
+
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 28px; position:relative; z-index:2; }
+
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.55;
+    z-index:0;
+    pointer-events:none;
+  }
+  .blob-1{ width:420px; height:420px; background:var(--violet); top:-140px; left:-120px; }
+  .blob-2{ width:360px; height:360px; background:var(--yellow); top:60px; right:-140px; opacity:0.5; }
+  .blob-3{ width:300px; height:300px; background:var(--teal); bottom:-100px; left:20%; opacity:0.4; }
+
+  nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,248,239,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:18px 28px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-brand{
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:20px;
+  }
+  .nav-brand span{ color:var(--coral); }
+  .nav-links{ display:flex; gap:22px; font-size:14px; font-weight:500; }
+  .nav-links a{
+    padding:6px 4px; border-bottom:2px solid transparent; transition:border-color .15s ease, color .15s ease;
+  }
+  .nav-links a:hover{ border-color:var(--violet); color:var(--violet); }
+  @media (max-width:560px){ .nav-links{ gap:12px; font-size:12px; } }
+
+  .hero{ position:relative; padding:100px 0 90px; }
+  .badge{
+    display:inline-block;
+    background:var(--ink); color:#fff;
+    font-size:13px; font-weight:600;
+    padding:8px 16px; border-radius:100px;
+    margin-bottom:26px;
+    transform:rotate(-2deg);
+    border:2px solid var(--pop);
+  }
+  .hero h1{
+    font-size:clamp(38px, 6.5vw, 64px);
+    font-weight:700; line-height:1.06;
+    margin-bottom:22px;
+  }
+  .hero h1 .hl{
+    background:var(--pop);
+    color:#fff;
+    padding:2px 10px;
+    display:inline-block;
+    transform:rotate(-1.5deg);
+    border-radius:6px;
+  }
+  .hero-sub{
+    font-size:17px; color:var(--ink-soft);
+    max-width:560px; margin-bottom:36px;
+  }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 26px; border-radius:100px;
+    font-weight:600; font-size:15px;
+    border:2.5px solid var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-solid{ background:var(--pop); color:#fff; box-shadow:5px 5px 0 var(--ink); }
+  .btn-solid:hover{ transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--ink); }
+  .btn-outline{ background:#fff; color:var(--ink); box-shadow:5px 5px 0 var(--ink); }
+  .btn-outline:hover{ transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--ink); border-color:var(--pop); color:var(--pop); }
+
+  section{ position:relative; padding:70px 0; }
+  .tag-label{
+    display:inline-block;
+    font-size:13px; font-weight:700;
+    color:#fff; background:var(--coral);
+    padding:6px 14px; border-radius:100px;
+    margin-bottom:20px;
+    transform:rotate(-1deg);
+  }
+  section h2{ font-size:clamp(26px,4vw,36px); margin-bottom:30px; }
+
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:36px; align-items:start; }
+  @media (max-width:680px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-text p{ color:var(--ink-soft); margin-bottom:14px; font-size:15.5px; }
+  .about-text strong{ color:var(--ink); font-weight:600; }
+
+  .sticker-panel{
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .sticker-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 0; border-bottom:1px dashed var(--border); font-size:14px;
+  }
+  .sticker-row:last-child{ border-bottom:none; }
+  .sticker-row span:first-child{ color:var(--ink-soft); }
+  .sticker-row span:last-child{ font-weight:600; color:var(--teal); }
+
+  .skill-grid{ display:flex; flex-wrap:wrap; gap:14px; }
+  .chip{
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:14px;
+    padding:12px 20px;
+    font-weight:600; font-size:14px;
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .chip:nth-child(4n+1):hover{ background:var(--yellow); }
+  .chip:nth-child(4n+2):hover{ background:var(--pink); }
+  .chip:nth-child(4n+3):hover{ background:var(--teal); color:#fff; }
+  .chip:nth-child(4n+4):hover{ background:var(--violet); color:#fff; }
+  .chip:hover{ transform:translate(-2px,-2px) rotate(-1deg); }
+
+  .edu-card{
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:6px 6px 0 var(--violet);
+  }
+  .edu-card h3{ font-size:20px; margin-bottom:6px; }
+  .edu-meta{ color:var(--coral); font-weight:600; font-size:14px; margin-bottom:14px; }
+  .edu-desc{ color:var(--ink-soft); font-size:14.5px; }
+
+  .project-list{ display:flex; flex-direction:column; gap:22px; }
+  .project-card{
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:6px 6px 0 var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .project-card:nth-child(odd){ box-shadow:6px 6px 0 var(--teal); }
+  .project-card:nth-child(even){ box-shadow:6px 6px 0 var(--coral); }
+  .project-card:hover{ transform:translate(-3px,-3px); }
+  .project-top{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+  .project-top h3{ font-size:21px; }
+  .status-pill{
+    font-size:12px; font-weight:700; color:#fff; background:var(--teal);
+    padding:5px 12px; border-radius:100px;
+  }
+  .project-desc{ color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; }
+  .project-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .tag{
+    font-size:12px; font-weight:600; color:var(--violet);
+    border:2px solid var(--violet); border-radius:100px; padding:4px 12px;
+  }
+  .project-link{
+    display:inline-block; font-weight:600; font-size:14px;
+    border-bottom:2.5px solid var(--ink);
+  }
+  .project-link:hover{ color:var(--violet); border-color:var(--violet); }
+
+  .contact-box{
+    background:var(--ink);
+    color:#fff;
+    border-radius:24px;
+    padding:44px;
+    text-align:left;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-box h2{ color:#fff; margin-bottom:12px; }
+  .contact-box p{ color:#C9C4E0; font-size:15px; margin-bottom:28px; max-width:480px; }
+  .contact-links{ display:flex; gap:14px; flex-wrap:wrap; }
+  .contact-links .btn{ border-color:#fff; }
+  .contact-links .btn-outline{ background:transparent; color:#fff; box-shadow:5px 5px 0 var(--violet); }
+  .contact-links .btn-outline:hover{ background:#fff; color:var(--ink); }
+
+  footer{
+    text-align:center; padding:34px 20px;
+    color:var(--ink-soft); font-size:13px; font-weight:500;
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Ayan<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="Ayan_Ghosh_CV.pdf" target="_blank">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div class="badge">👋 Hey, I'm Ayan</div>
+    <h1>Engineering things that <span class="hl">think</span> and <span class="hl">connect</span>.</h1>
+    <p class="hero-sub">ECE student at Narula Institute of Technology, building at the intersection of software, electronics, and intelligent systems — one project at a time.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-solid">🚀 See my projects</a>
+      <a href="Ayan_Ghosh_CV.pdf" target="_blank" class="btn btn-outline">📄 Download CV</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <span class="tag-label">ABOUT ME</span>
+    <h2>A bit about how I think</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm an <strong>ECE student</strong> passionate about both software and hardware development. I'm currently exploring <strong>Java, Python, SQL, web development, and AI/ML</strong>, alongside a growing interest in <strong>embedded systems, electronics, and IoT</strong>.</p>
+        <p>I enjoy building projects that combine software, electronics, and intelligent systems — and I'm especially drawn to hackathons and real-world problem solving.</p>
+        <p>My goal is to become a well-rounded engineer who moves fluidly between code and circuits, because the best solutions come from combining strong programming skills with solid hardware knowledge.</p>
+      </div>
+      <div class="sticker-panel">
+        <div class="sticker-row"><span>Focus</span><span>SW + HW</span></div>
+        <div class="sticker-row"><span>Interests</span><span>IoT / ML</span></div>
+        <div class="sticker-row"><span>Status</span><span>Learning 🌱</span></div>
+        <div class="sticker-row"><span>Open to</span><span>Hackathons 🏆</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <span class="tag-label">SKILLS</span>
+    <h2>What I work with</h2>
+    <div class="skill-grid">
+      <div class="chip">Java</div>
+      <div class="chip">Python</div>
+      <div class="chip">SQL</div>
+      <div class="chip">HTML / CSS / JS</div>
+      <div class="chip">Scikit-learn</div>
+      <div class="chip">Git & GitHub</div>
+      <div class="chip">Arduino</div>
+      <div class="chip">Embedded Systems</div>
+    </div>
+  </section>
+
+  <section id="education">
+    <span class="tag-label">EDUCATION</span>
+    <h2>Where I'm learning</h2>
+    <div class="edu-card">
+      <h3>B.Tech, Electronics & Communication Engineering</h3>
+      <div class="edu-meta">Narula Institute of Technology</div>
+      <div class="edu-desc">Coursework and self-driven projects spanning software development, embedded systems, and applied machine learning.</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="tag-label">PROJECTS</span>
+    <h2>Things I've built</h2>
+    <div class="project-list">
+
+      <div class="project-card">
+        <div class="project-top">
+          <h3>📩 Spam Detection</h3>
+          <span class="status-pill">Completed</span>
+        </div>
+        <p class="project-desc">An ML/NLP system that classifies SMS messages as spam or ham using TF-IDF vectorization and a Logistic Regression classifier, with an interactive live tester built in.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">NLP</span>
+        </div>
+        <a href="https://github.com/ayanghosh-svg/spam-detection" class="project-link">View on GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <h3>🔧 Project Name</h3>
+          <span class="status-pill" style="background:var(--yellow); color:var(--ink);">In Progress</span>
+        </div>
+        <p class="project-desc">Short description of what this project does and what problem it solves. Replace this with your own project details.</p>
+        <div class="project-tags">
+          <span class="tag">Tag One</span>
+          <span class="tag">Tag Two</span>
+        </div>
+        <a href="#" class="project-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Let's build something 🤝</h2>
+      <p>Open to hackathons, collaborations, and conversations about software, hardware, or anything in between.</p>
+      <div class="contact-links">
+        <a href="https://github.com/ayanghosh-svg" class="btn btn-outline">GitHub</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=reenaranighosh1974@gmail.com" class="btn btn-outline">Email</a>
+        <a href="https://www.linkedin.com/in/ayan-ghosh-a32b64388/" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Made with 💛 by Ayan Ghosh</footer>
+
+</body>
+</html>
